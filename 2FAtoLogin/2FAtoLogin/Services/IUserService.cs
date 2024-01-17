@@ -10,5 +10,10 @@ namespace _2FAtoLogin.Services
     public interface IUserService
     {
         Task<User> GetUser(string username, string password);
+
+        Task<User> GetUserbyName(string username);
+
+        Task<User> UpdateUser(User user);
+
     }
 }

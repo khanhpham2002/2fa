@@ -41,5 +41,6 @@ namespace _2FAtoLogin.Services
             var plainToken = tokenHandler.CreateToken(securityTokenDescriptor);
             return tokenHandler.WriteToken(plainToken);
         }
+
     }
 }

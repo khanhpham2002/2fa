@@ -11,10 +11,12 @@ namespace _2FAtoLogin.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _repo;
+        private readonly IDbContext _dbContext;
 
-        public UserService(IUserRepository repo)
+        public UserService(IUserRepository repo,IDbContext dbContext)
         {
             _repo = repo;
+            _dbContext = dbContext;
         }
         public async Task<User> GetUser(string username, string password)
         {
@@ -24,6 +26,23 @@ namespace _2FAtoLogin.Services
                 throw new Exception("User not found");
             }
             return fromdb;
+        }
+
+        public async Task<User> GetUserbyName(string username)
+        {
+            var fromdb = _repo.SingleOrDefault(u => username == u.UserName);
+            if (fromdb == null)
+            {
+                throw new Exception("User not found");
+            }
+            return fromdb;
+        }
+
+        public async Task<User> UpdateUser(User user)
+        {
+            _repo.Update(user);
+            _dbContext.SaveChanges();
+            return user;
         }
     }
 }

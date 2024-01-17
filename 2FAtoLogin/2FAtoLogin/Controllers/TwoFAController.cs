@@ -1,4 +1,5 @@
-﻿using _2FAtoLogin.Models;
+﻿using _2FAtoLogin.Data;
+using _2FAtoLogin.Models;
 using _2FAtoLogin.Services;
 using Google.Authenticator;
 using System;
@@ -17,11 +18,13 @@ namespace _2FAtoLogin.Controllers
     {
         private readonly IUserService _userService;
         private readonly ITokenService _tokenService;
+        private readonly IDbContext _dbContext;
         
-        public TwoFAController(IUserService userService, ITokenService tokenService)
+        public TwoFAController(IUserService userService, ITokenService tokenService, IDbContext dbContext)
         {
             _userService = userService;
             _tokenService = tokenService;
+            _dbContext = dbContext;
         }
         [HttpPost]
         [Route("createmfa")]
@@ -31,6 +34,10 @@ namespace _2FAtoLogin.Controllers
             var userUniqueKey = username + googleAuthKey;
             var tfa = new TwoFactorAuthenticator();
             var setupInfo = tfa.GenerateSetupCode("kay", username, ConvertSecretToBytes(userUniqueKey, false), 300);
+            User tmp = await _userService.GetUserbyName(username);
+            tmp.hasTwoFactorAuth = true;
+            await _userService.UpdateUser(tmp);
+            _dbContext.SaveChanges();
             return Ok(new
             {
                 UserName = username,
@@ -63,8 +70,7 @@ namespace _2FAtoLogin.Controllers
                         UserId = tmp.UserId,
                         Token = _tokenService.CreateToken(tmp.UserName, "USER")
                     };
-                    if (tmp.hasTwoFactorAuth) return null;
-                    else return Ok(jwtToken);
+                    return Ok(jwtToken);
                 }
                 return Unauthorized();
             }

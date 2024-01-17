@@ -10,5 +10,7 @@ namespace _2FAtoLogin.Data
     public interface IRepository<T>
     {
         T SingleOrDefault(Expression<Func<T, bool>> filter);
+
+        void Update(T entity);
     }
 }
