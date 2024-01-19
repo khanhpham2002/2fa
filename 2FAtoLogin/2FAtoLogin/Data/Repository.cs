@@ -33,5 +33,10 @@ namespace _2FAtoLogin.Data
             }
             DbContext.SaveChanges();
         }
+        public virtual void Add(T entity)
+        {
+            ((IDbSet<T>)DbContext.Set<T>()).Add(entity);
+            DbContext.SaveChanges();
+        }
     }
 }

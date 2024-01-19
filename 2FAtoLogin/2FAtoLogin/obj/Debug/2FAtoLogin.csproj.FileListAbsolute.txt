@@ -261,9 +261,9 @@ C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\bin\Unity.Abstractions.pd
 C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\bin\Unity.Container.pdb
 C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\bin\Antlr3.Runtime.pdb
 C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\obj\Debug\_2FAtoLogin.Migrations.InitialCreate.resources
-C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\obj\Debug\2FAtoLogin.csproj.GenerateResource.cache
 C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\obj\Debug\2FAtoLogin.csproj.CoreCompileInputs.cache
 C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\obj\Debug\2FAtoLogin.csproj.CopyComplete
 C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\obj\Debug\2FAtoLogin.dll
 C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\obj\Debug\2FAtoLogin.pdb
+C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\obj\Debug\_2FAtoLogin.Migrations.InitialCreate.resources
+C:\Users\MrKhai\source\repos\2fa\2FAtoLogin\2FAtoLogin\obj\Debug\2FAtoLogin.csproj.GenerateResource.cache

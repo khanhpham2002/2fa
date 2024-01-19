@@ -13,7 +13,7 @@ namespace _2FAtoLogin.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202401161434010_InitialCreate"; }
+            get { return "202401190736295_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

@@ -41,7 +41,12 @@ namespace _2FAtoLogin.Services
         public async Task<User> UpdateUser(User user)
         {
             _repo.Update(user);
-            _dbContext.SaveChanges();
+            return user;
+        }
+        public async Task<User> AddUser(User user)
+        {
+            _repo.Add(user);
+
             return user;
         }
     }

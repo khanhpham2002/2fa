@@ -237,6 +237,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Security.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TwoFAController.cs" />
     <Compile Include="Data\DataConnection.cs" />
@@ -245,12 +247,14 @@
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Data\RepositoryImplementations.cs" />
     <Compile Include="Data\RepositoryInterface.cs" />
+    <Compile Include="Domain\Enums.cs" />
+    <Compile Include="Domain\ProductRole.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202401161434010_InitialCreate.cs" />
-    <Compile Include="Migrations\202401161434010_InitialCreate.designer.cs">
-      <DependentUpon>202401161434010_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202401190736295_InitialCreate.cs" />
+    <Compile Include="Migrations\202401190736295_InitialCreate.designer.cs">
+      <DependentUpon>202401190736295_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\JwtToken.cs" />
@@ -346,8 +350,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202401161434010_InitialCreate.resx">
-      <DependentUpon>202401161434010_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202401190736295_InitialCreate.resx">
+      <DependentUpon>202401190736295_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

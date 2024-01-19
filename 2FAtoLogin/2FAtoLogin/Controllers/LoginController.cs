@@ -1,4 +1,6 @@
-﻿using _2FAtoLogin.Models;
+﻿using _2FAtoLogin.Data;
+using _2FAtoLogin.Domain;
+using _2FAtoLogin.Models;
 using _2FAtoLogin.Services;
 using System;
 using System.Collections.Generic;
@@ -14,11 +16,12 @@ namespace _2FAtoLogin.Controllers
     {
         private readonly IUserService _userService;
         private readonly ITokenService _tokenService;
-       
-        public LoginController(IUserService userService, ITokenService tokenService)
+        private readonly IDbContext _dbContext;
+        public LoginController(IUserService userService, ITokenService tokenService , IDbContext dbContext)
         {
             _userService = userService;
             _tokenService = tokenService;
+            _dbContext = dbContext;
         }
 
         [HttpPost]
@@ -28,14 +31,22 @@ namespace _2FAtoLogin.Controllers
             try
             {
                 var tmp = await _userService.GetUser(model.UserName, model.Password);
-                if(tmp!=null)
+                var testRoles = new List<ProductRole>
+                {
+                    new ProductRole { RoleName = RoleType.ADMINISTRATOR },
+                    new ProductRole { RoleName = RoleType.VIEWER }
+                };
+
+                if (tmp!=null)
                 {
                     var jwtToken = new JwtToken()
                     {
-                        Role = "USER",
+                        Roles = testRoles.ToArray(),
+                        Scheme = "Bearer",
                         UserName = tmp.UserName,
                         UserId = tmp.UserId,
-                        Token = _tokenService.CreateToken(tmp.UserName, "USER")
+                        Token = _tokenService.CreateToken(tmp.UserName, "LoginSignature", testRoles.ToArray(),model.RememberMe,model.Password,false),
+                        IsConfigurator = false
                     };
                     if (tmp.hasTwoFactorAuth) return Ok(tmp);
                     else return Ok(jwtToken);
@@ -45,6 +56,21 @@ namespace _2FAtoLogin.Controllers
             {
                 throw ex;
             }
+        }
+        [HttpPost]
+        [Route("add")]
+        public async Task<IHttpActionResult> AddUser([FromBody] User user)
+        {
+            try
+            {
+                _userService.AddUser(user);
+      
+               
+            } catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(user);
         }
     }
 }

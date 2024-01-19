@@ -12,5 +12,6 @@ namespace _2FAtoLogin.Data
         T SingleOrDefault(Expression<Func<T, bool>> filter);
 
         void Update(T entity);
+        void Add(T entity);
     }
 }

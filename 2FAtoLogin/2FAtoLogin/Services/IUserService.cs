@@ -15,5 +15,7 @@ namespace _2FAtoLogin.Services
 
         Task<User> UpdateUser(User user);
 
+        Task<User> AddUser(User user);
+
     }
 }

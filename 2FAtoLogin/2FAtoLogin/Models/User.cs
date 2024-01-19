@@ -24,5 +24,7 @@ namespace _2FAtoLogin.Models
         public bool hasTwoFactorAuth { get; set; }
         
         public string MobileNumber { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

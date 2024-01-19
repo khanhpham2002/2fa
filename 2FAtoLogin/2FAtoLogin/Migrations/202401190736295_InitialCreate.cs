@@ -19,6 +19,7 @@
                         EmailAddress = c.String(),
                         hasTwoFactorAuth = c.Boolean(nullable: false),
                         MobileNumber = c.String(),
+                        IsActive = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.UserId);
             

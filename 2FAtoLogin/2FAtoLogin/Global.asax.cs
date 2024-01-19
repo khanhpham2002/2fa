@@ -6,6 +6,7 @@ using StructureMap.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -31,6 +32,7 @@ namespace _2FAtoLogin
             container.RegisterType<ITokenService, TokenService>();
             container.RegisterType<IUserService, UserService>();
             container.RegisterType<IUserRepository, UserRepository>();
+            container.RegisterInstance(UrlEncoder.Default);
         }
 
 
